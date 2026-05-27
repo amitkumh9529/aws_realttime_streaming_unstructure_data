@@ -5,7 +5,7 @@ def extract_file_name(file_content):
 def extract_position(file_content):
     pass
 
-def extract_class_code(file_content):
+def extract_classcode(file_content):
     pass
 
 def extract_start_date(file_content):
@@ -24,6 +24,9 @@ def extract_notes(file_content):
     pass
 
 def extract_duties(file_content):
+    pass
+
+def extract_job_type(file_content):
     pass
 
 def extract_selection(file_content):
