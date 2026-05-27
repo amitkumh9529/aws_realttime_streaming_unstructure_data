@@ -72,8 +72,15 @@ if __name__ == "__main__":
 
     ])
 
-    udf = define_udfs()
+    udfs = define_udfs()
 
+
+    job_bulletins_df = (spark.readStream
+                        .format('text')
+                        .option('wholetext', True)
+                        .load(text_input_dir)
+                        )
+    job_bulletins_df.show()
 
 
 
