@@ -35,5 +35,7 @@ def extract_experience_length(file_content):
     pass
 def extract_education_length(file_content):
     pass
+def extract_school_type(file_content):
+    pass
 def extract_application_location(file_content):
     pass

@@ -1,6 +1,8 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType , DateType, DoubleType
+from pyspark.sql.functions import udf
 from config.config import configuration
+from udf_utils import *
 
 
 
@@ -24,7 +26,7 @@ def define_udfs():
         'extract_selection_udf': udf(extract_selection, StringType()),
         'extract_experience_length_udf': udf(extract_experience_length, StringType()),
         'extract_job_type_udf': udf(extract_job_type, StringType()),
-        'extract_education_type_udf': udf(extract_education_type, StringType()),
+        'extract_education_length_udf': udf(extract_education_length, StringType()),
         'extract_school_type_udf': udf(extract_school_type, StringType()),
         'extract_application_location_udf': udf(extract_application_location, StringType()),
     }
@@ -83,6 +85,10 @@ if __name__ == "__main__":
     job_bulletins_df.show()
 
 
-
-
+    query = (job_bulletins_df.writeStream
+             .outputMode("append")
+             .format("console")
+             .start()
+             )
+    query.awaitTermination()
 
